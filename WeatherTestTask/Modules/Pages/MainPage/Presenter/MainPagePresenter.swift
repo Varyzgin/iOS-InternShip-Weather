@@ -20,8 +20,12 @@ class MainPagePresenter: MainPagePresenterProtocol {
         self.view = view
     }
     
-    func loadForecast() {
-        let components = RequestComponents(baseURL: "https://api.weatherapi.com/", path: "/v1/forecast.json",params: ["key": "8b77633490004888943132753252205", "q": "Нижний Новгород", "days": "5", "lang": "ru"])
+    func loadForecast(city: String) {
+        let components = RequestComponents(baseURL: "https://api.weatherapi.com/", path: "/v1/forecast.json",params: ["key": "8b77633490004888943132753252205", "q": city, "days": "5", "lang": "ru"])
+        
+        DispatchQueue.main.async {
+            self.view?.titleLabel.text = city
+        }
         
         let service = NetworkService()
         service.sendRequest(components: components, responseType: WeatherResponse.self) {

@@ -11,7 +11,7 @@ struct Builder {
     static func configureMainPage() -> UIViewController {
         let view = MainPageViewController()
         let presenter = MainPagePresenter(view: view)
-        presenter.loadForecast()
+        presenter.loadForecast(city: "Нижний Новгород")
         view.presenter = presenter
         return view
     }

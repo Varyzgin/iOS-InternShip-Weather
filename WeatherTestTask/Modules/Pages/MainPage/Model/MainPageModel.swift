@@ -53,3 +53,4 @@ struct WeatherData {
     let maxwind_kph: Double
     let avghumidity: Double
 }
+
